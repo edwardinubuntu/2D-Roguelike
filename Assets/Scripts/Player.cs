@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : MovingObject {
+public class Player : MovingObject
+{
 
 	public int wallDamage = 1;
 	public int pointsPerFood = 10;
@@ -14,7 +15,8 @@ public class Player : MovingObject {
 
 
 	// Use this for initialization
-	protected override void Start () {
+	protected override void Start ()
+	{
 		animator = GetComponent<Animator> ();
 
 		food = GameManager.instance.playerFoodPoints;
@@ -22,14 +24,15 @@ public class Player : MovingObject {
 		base.Start ();
 	}
 
-	private void OnDisable()
+	private void OnDisable ()
 	{
 		GameManager.instance.playerFoodPoints = food;
 
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 		if (!GameManager.instance.playersTurn)
 			return;
 
@@ -44,8 +47,8 @@ public class Player : MovingObject {
 
 
 
-		if (horizontal!= 0 ||vertical= 0)
-			AttemptMove<Wall>(horizontal,vertical);
+		if (horizontal != 0 || vertical != 0)
+			AttemptMove<Wall> (horizontal, vertical);
 	
 	}
 
@@ -60,11 +63,9 @@ public class Player : MovingObject {
 
 		GameManager.instance.playersTurn = false;
 	}
-	private void CheckIfGameOver()
+	private void CheckIfGameOver ()
 	{
 		if (food <= 0)
-			GameManager.instance.GameOver();
+			GameManager.instance.GameOver ();
 	}
-
-
 }
