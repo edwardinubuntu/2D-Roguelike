@@ -30,6 +30,41 @@ public class Player : MovingObject {
 	
 	// Update is called once per frame
 	void Update () {
+		if (!GameManager.instance.playersTurn)
+			return;
+
+		int horizontal = 0;
+		int vertical = 0;
+
+		horizontal = (int)Input.GetAxisRaw ("Horizontal");
+		vertical = (int)Input.GetAxisRaw ("Vertical");
+
+		if (horizontal != 0)
+			vertical = 0;
+
+
+
+		if (horizontal!= 0 ||vertical= 0)
+			AttemptMove<Wall>(horizontal,vertical);
 	
 	}
+
+	protected override void AttemptMkve <T> (int xDir, int yDir)
+	{
+		food--;
+		base.AttemptMove <T> (xDir, yDir);
+
+		RaycastHit2D hit;
+
+		CheckIfGameOver ();
+
+		GameManager.instance.playersTurn = false;
+	}
+	private void CheckIfGameOver()
+	{
+		if (food <= 0)
+			GameManager.instance.GameOver();
+	}
+
+
 }
