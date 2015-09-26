@@ -8,11 +8,9 @@ public class Player : MovingObject
 	public int pointsPerFood = 10;
 	public int pointsPerSoda = 20;
 	public float restartLevelDelay = 1f;
-
-
+	
 	private Animator animator;
 	private int food;
-
 
 	// Use this for initialization
 	protected override void Start ()
@@ -45,14 +43,12 @@ public class Player : MovingObject
 		if (horizontal != 0)
 			vertical = 0;
 
-
-
 		if (horizontal != 0 || vertical != 0)
 			AttemptMove<Wall> (horizontal, vertical);
 	
 	}
 
-	protected override void AttemptMkve <T> (int xDir, int yDir)
+	protected override void AttemptMove <T> (int xDir, int yDir)
 	{
 		food--;
 		base.AttemptMove <T> (xDir, yDir);
@@ -63,6 +59,7 @@ public class Player : MovingObject
 
 		GameManager.instance.playersTurn = false;
 	}
+
 	private void CheckIfGameOver ()
 	{
 		if (food <= 0)
