@@ -86,7 +86,7 @@ public class Player : MovingObject
 		GameManager.instance.playersTurn = false;
 	}
 
-	private void LoseFood (int loss)
+	public void LoseFood (int loss)
 	{
 		animator.SetTrigger ("playerHit");
 		food -= loss;
