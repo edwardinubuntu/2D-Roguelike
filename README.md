@@ -12,8 +12,8 @@
   2. Creating Destructible Walls  - Sep 26, 2015
   3. Player Animator Controller - Sep 26, 2015
   4. Writing the Player Script  - Sep 26, 2015
-  5. Writing the Enemy Script
-  6. Enemy Animator Controller
+  5. Writing the Enemy Script - Oct 3, 2015
+  6. Enemy Animator Controller  - Oct 3, 2015
 4. ARCHITECTURE AND POLISH
   1. Adding UI & Level Transitions
   2. Audio and Sound Manager
