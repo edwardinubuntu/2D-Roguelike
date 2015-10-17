@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;//Allows us to use Lists.
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
+	public float levelStartDelay = 2f;
 	public float turnDelay = 0.1f;
 	public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
 	private BoardManager boardScript;                       //Store a reference to our BoardManager which will set up the level.
@@ -11,9 +13,13 @@ public class GameManager : MonoBehaviour {
 	public int playerFoodPoints = 100;
 	[HideInInspector] public bool playersTurn = true;
 
-	private int level = 3;
+	private Text levelText;
+	private GameObject levelImage;
+	private int level = 1;
 	private List<Enemy>enemies;
 	private bool enemiesMoving;
+	private bool doingSetup;
+
 	
 	//Awake is always called before any Start functions
 	void Awake() {
@@ -40,9 +46,25 @@ public class GameManager : MonoBehaviour {
 		//Call the InitGame function to initialize the first level 
 		InitGame();
 	}
+
+	private void OnLevelWasLoaded (int index)
+	{
+		level++;
+
+		InitGame ();
+	}
 	
 	//Initializes the game for each level.
 	void InitGame() {
+
+		doingSetup = true;
+
+		levelImage = GameObject.Find ("LevelImage");
+		levelText = GameObject.Find ("LevelText").GetComponent<Text>();
+		levelText.text =  "Day " + level;
+		levelImage.SetActive(true);
+		Invoke ("HideLevelImage", levelStartDelay);
+
 
 		enemies.Clear ();
 
@@ -51,15 +73,25 @@ public class GameManager : MonoBehaviour {
 
 		
 	}
+
+	private void HideLevelImage()
+	{
+		levelImage.SetActive (false);
+		doingSetup = false;
+	}
 	
 	public void GameOver (){
+
+		levelText.text = "After "+ level +" days, you starved.";
+		levelImage.SetActive (true);
 		enabled = false;
+
 	}
 	
 	//Update is called every frame.
 	void Update()
 	{
-		if (playersTurn || enemiesMoving)
+		if (playersTurn || enemiesMoving||doingSetup)
 			return;
 		StartCoroutine (MoveEnemies ());
 	}
