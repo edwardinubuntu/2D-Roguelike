@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: b63bb41c8e35946c79240689c5b89bf8
-timeCreated: 1443235222
+timeCreated: 1445660016
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - dmgSprite: {instanceID: 0}
+  - chopSound1: {fileID: 8300000, guid: 4c2332bc8245b474dad63074059bb755, type: 3}
+  - chopSound2: {fileID: 8300000, guid: f6aaac83be9e0493493aace800b76619, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

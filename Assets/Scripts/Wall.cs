@@ -23,7 +23,8 @@ public class Wall : MonoBehaviour {
 		SoundManager.instance.RandomizeSfx (chopSound1, chopSound2);
 
 		//Set spriteRenderer to the damaged wall sprite.
-		spriteRenderer.sprite = dmgSprite;
+		// TODO CHeck the sprite renderer
+//		spriteRenderer.sprite = dmgSprite;
 		
 		//Subtract loss from hit point total.
 		hp -= loss;
