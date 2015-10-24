@@ -18,9 +18,7 @@ public class Enemy : MovingObject
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
 		base.Start ();
 
-		Vector3 newScale = gameObject.transform.localScale;
-		newScale.x *= -1;
-		gameObject.transform.localScale = newScale;
+		this.FaceToLeft ();
 	}
 
 	protected override void AttemptMove <T> (int xDir, int yDir)
@@ -43,6 +41,12 @@ public class Enemy : MovingObject
 		} else {
 			xdir = target.position.x > transform.position.x ? 1 : -1;
 		}
+
+		if (target.position.x > transform.position.x) {
+			this.FaceToRight ();
+		} else {
+			this.FaceToLeft ();
+		}
 		
 		AttemptMove<Player> (xdir, ydir);
 	}
@@ -56,4 +60,15 @@ public class Enemy : MovingObject
 		SoundManager.instance.RandomizeSfx (enemyAttack1, enemyAttack2);
 	}
 
+	private void FaceToLeft() {
+		Vector3 newScale = gameObject.transform.localScale;
+		newScale.x *= -1;
+		gameObject.transform.localScale = newScale;
+	}
+	
+	private void FaceToRight() {
+		Vector3 newScale = gameObject.transform.localScale;
+		newScale.x *= 1;
+		gameObject.transform.localScale = newScale;
+	}
 }
