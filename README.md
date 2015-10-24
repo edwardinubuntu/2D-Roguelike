@@ -15,6 +15,6 @@
   5. Writing the Enemy Script - Oct 3, 2015
   6. Enemy Animator Controller  - Oct 3, 2015
 4. ARCHITECTURE AND POLISH
-  1. Adding UI & Level Transitions
+  1. Adding UI & Level Transitions  - Oct 17, 2015
   2. Audio and Sound Manager
   3. Adding Mobile Controls
