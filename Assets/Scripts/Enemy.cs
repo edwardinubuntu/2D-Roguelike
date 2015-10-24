@@ -17,6 +17,10 @@ public class Enemy : MovingObject
 		animator = GetComponent < Animator> ();
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
 		base.Start ();
+
+		Vector3 newScale = gameObject.transform.localScale;
+		newScale.x *= -1;
+		gameObject.transform.localScale = newScale;
 	}
 
 	protected override void AttemptMove <T> (int xDir, int yDir)
