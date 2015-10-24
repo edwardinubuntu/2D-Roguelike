@@ -4,7 +4,10 @@ using System.Collections;
 public class Wall : MonoBehaviour {
 
 	public Sprite dmgSprite; 
-	public int hp = 4;                          //hit points for the wall.
+	public int hp = 4; 
+	public AudioClip chopSound1;
+	public AudioClip chopSound2;
+	//hit points for the wall.
 	
 	private SpriteRenderer spriteRenderer;      //Store a component reference to the attached SpriteRenderer.
 
@@ -17,6 +20,8 @@ public class Wall : MonoBehaviour {
 	//DamageWall is called when the player attacks a wall.
 	public void DamageWall (int loss)
 	{
+		SoundManager.instance.RandomizeSfx (chopSound1, chopSound2);
+
 		//Set spriteRenderer to the damaged wall sprite.
 		spriteRenderer.sprite = dmgSprite;
 		
