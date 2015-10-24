@@ -24,7 +24,9 @@ public class Wall : MonoBehaviour {
 
 		//Set spriteRenderer to the damaged wall sprite.
 		// TODO CHeck the sprite renderer
-//		spriteRenderer.sprite = dmgSprite;
+		if (spriteRenderer != null) {
+		spriteRenderer.sprite = dmgSprite;
+		}
 		
 		//Subtract loss from hit point total.
 		hp -= loss;
